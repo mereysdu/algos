@@ -1,0 +1,15 @@
+class Solution:
+    def isUgly(self, ex: int) -> bool:
+        while(ex>=1):
+          if(ex%5==0):
+            ex = ex/5
+          elif(ex%3==0):
+            ex = ex/3
+          elif(ex%2==0):
+            ex = ex/2
+          else:
+            break
+        if(ex==1):
+            return True
+        else: 
+            return False
