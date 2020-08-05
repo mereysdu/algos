@@ -1,0 +1,13 @@
+class Solution:
+    def maxCount(self, m: int, n: int, ops: List[List[int]]) -> int:
+        x=0
+        y=0
+        if ops:
+            mrow, mcol = ops[0][0], ops[0][1]
+            
+            for el in ops:
+                mrow, mcol = min(mrow, el[0]),min(mcol, el[1])
+            
+            return mrow*mcol
+        else:
+            return m*n
