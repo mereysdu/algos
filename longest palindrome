@@ -1,0 +1,30 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        stack = []
+        onlyone = []
+        one = 0
+
+        for e in s:
+            if e not in stack:
+                stack.append(e)
+
+        count = 0
+        res = 0
+        for x in stack:
+            for e in s:
+                if(x==e):
+                    count+=1
+            if(count>=2):
+                if(count%2==0):
+                    res += count
+                else:
+                    res += count - 1
+                    one = 1
+            else:
+                onlyone.append(x)
+            count = 0
+
+        if(onlyone or one==1):
+            res = res+1
+        
+        return res
