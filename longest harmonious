@@ -1,0 +1,9 @@
+class Solution:
+    def findLHS(self, nums: List[int]) -> int:
+        dic = collections.Counter(nums)
+        count = 0
+        for key in dic.keys():
+            if(key + 1 in dic):
+                if(count < dic[key] + dic[key+1]):
+                    count = max(count, dic[key] + dic[key+1])
+        return count
