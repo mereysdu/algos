@@ -1,0 +1,15 @@
+class Solution(object):
+    def isValid(self, s):
+        stack = []
+        ob = {
+        	'{': '}', 
+        	'(': ')', 
+        	'[': ']'
+        }
+        for bracket in s:
+        	if bracket in ob:
+        		stack.append(bracket)
+        	elif not stack or ob[stack.pop()] != bracket:
+        		return False
+
+        return len(stack) == 0
