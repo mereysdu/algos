@@ -1,0 +1,23 @@
+class Solution {
+    public int[] numberOfPairs(int[] nums) {
+        Map<Integer, Integer> freq = new HashMap();
+
+        for(int i = 0; i< nums.length;i++) {
+            if(!freq.containsKey(nums[i])) {
+                freq.put(nums[i], 1);
+            } else {
+                freq.put(nums[i], freq.get(nums[i]) + 1);
+            }
+        }
+        
+        int countOfPairs = 0;
+        int countOfElInArray = 0;
+        for(Integer el : freq.values()) {
+            countOfPairs += el/2;
+            countOfElInArray += el%2;
+        }
+        
+        int[] res = {countOfPairs,countOfElInArray};
+        return res;
+    }
+}
