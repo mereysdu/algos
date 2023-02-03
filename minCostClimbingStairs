@@ -1,0 +1,22 @@
+package com.company;
+
+public class MinCostClimbingStairs {
+    public static void main(String[] args) {
+        int[] cost = {11,10,2,3,4,10,5,6,10,7};
+        minCostClimbingStairs(cost);
+
+    }
+
+    public static int minCostClimbingStairs(int[] cost) {
+        int len = cost.length;
+        for(int i = len-3;i>=0;i--) {
+            cost[i] += Math.min(cost[i+1], cost[i+2]);
+        }
+
+        for(int i : cost) {
+            System.out.println(i);
+        }
+
+        return Math.min(cost[0], cost[1]);
+    }
+}
