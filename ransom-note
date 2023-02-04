@@ -1,0 +1,42 @@
+package com.company;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class RansomNote {
+    public static void main(String[] args) {
+        String ransomNote = "a";
+        String magazine  = "b";
+        System.out.println(canConstruct(ransomNote,magazine));
+
+    }
+
+    private static boolean canConstruct(String ransomNote, String magazine) {
+        Map<Character,Integer> freq1 = getFreqOfElements(ransomNote);
+        Map<Character,Integer> freq2 = getFreqOfElements(magazine);
+
+        for(Character c:freq1.keySet()) {
+            if (!freq2.containsKey(c)) {
+                return false;
+            }
+            if(freq1.get(c) > freq2.get(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static Map<Character,Integer> getFreqOfElements(String s) {
+        Map<Character, Integer> freq = new HashMap<>();
+        for (int i = 0;i < s.length();i++) {
+            Character el = s.charAt(i);
+            if(!freq.containsKey(el)) {
+                freq.put(el, 1);
+            } else {
+                freq.put(el, freq.get(el) + 1);
+            }
+        }
+
+        return freq;
+    }
+}
